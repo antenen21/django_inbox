@@ -1,0 +1,112 @@
+{% extends 'inbox_app/base.html' %}
+{% block title %}Inbox{% endblock title %}
+
+
+<!-- Navbar content left side -->
+{% block navbar_content %}
+    <i class="fas fa-envelope align-middle" style="color: red;"></i>&nbsp;&nbsp; INBOX
+{% endblock navbar_content %}
+
+
+
+<!-- DataTime (Desktop mode)-->
+{% block DataTime %}                        <!-- Date format: lowercase = 23, uppercase = 2023 -->
+                                            <!-- INFO: using Native Django {% now "H:i:s" %} the time doesnt run constantly -->
+    <div class="text-light" id="desk-datatime" style="font-size: 12px; margin-top: 5px;">{% now "l (m/d/Y)" %}&nbsp;
+        <span style="color: #8abaae; font-weight: bold;" id="clock"></span>
+    </div>
+{% endblock DataTime %}
+
+
+
+<!-- Background image denied here -->
+{% block background_image %}
+{% endblock background_image %}
+
+
+<!-- Block Typed JS denied here -->
+{% block Typed %}
+{% endblock Typed %}
+
+
+
+
+<!-- Sidebar Offcanvas -->  <!-- Note: admin:index   target="_blank" --> 
+{% block sidebar_content %}
+<center>
+    <!-- Welcome User -->                       <!-- or {{user.username}} -->
+    Welcome User: <span class="text-success">{{ user.get_username }}</span>
+    <br><br>
+</center>
+
+<a data-bs-toggle="modal" data-bs-target="#logoutModal" class="btn btn-sm btn-outline-danger">Logout</a>{#'logout' Because logout required behind the scene redirected in settings.py to "home" front-end #}
+<a href="{% url 'admin:index' %}" target="_blank" class="btn btn-sm btn-outline-secondary">Admin</a>
+{% endblock sidebar_content %}
+
+
+
+
+<!-- Page content -->
+{% block content %}
+<br>
+<div class="container-fluid mt-3" style="width: 90%;">
+
+    <!-- Dashboard -->
+    <div>
+        {% include 'dashboard/dashboard.html' %}
+    </div>
+    <br>
+
+    <!-- Global Search -->
+    <form action="">
+        <div class="input-group input-group-sm mb-3">
+            <input name="#" type="text" class="form-control input-sm" placeholder="Search for..." value="#">
+            <button class="btn btn-secondary" title="Search"><i class="fas fa-search"></i></button>
+            <a href="{% url 'inbox-path' %}" class="btn btn-dark" style="margin-left: 2px;" title="Refresh"><i class="fas fa-sync-alt"></i></a>
+        </div>
+    </form>
+
+    <!-- Table of messages -->
+    <div class="col-lg-12">
+        <div stxle="margin-top: 5px;">
+
+            <table class="table table-sm" >
+                <thead class="table-secondary">                          <!-- <thead> = Table Head -->
+                    <tr><!-- must have 100% -->
+                        <th style="width: 16.2%;">Name</th>               <!-- <th> = Table Header (bold) -->
+                        <th style="width: 14.2%;">Phone</th>
+                        <th style="width: 18.2%;">Email</th>
+                        <th style="width: 18.2%;">Subject</th>
+                        <th style="width: 14.2%;">Received on</th>
+                        <th style="width: 10.2%;">Status</th>
+                        <th colspan="2" style="text-align: center; width: 8.2%;">Actions</th>
+                    </tr>
+                </thead>
+                <!-- Data from backend -->
+                <tr>                                                    <!-- <tr> = Table Row -->
+                    <td>Name 1</td>                                     <!-- <td> = Table Data -->
+                    <td>Phone 1</td>
+                    <td>Email 1</td>
+                    <td>Subject 1</td>
+                    <td>DataTime1</td>
+                    <td>Status 1</td>
+                    <td>
+                        <button class="btn btn-secondary btn-sm btn-action" title="Delete message">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <a href="#" class="btn text-light btn-sm btn-action" style="background-color: #2e856e" title="Read message">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </td>    
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+</div> <!-- End of container-fluid -->
+{% endblock content %}
+
+

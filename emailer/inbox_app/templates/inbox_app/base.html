@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
+    <!-- Bootstrap 5 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!-- BoxIcons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'inbox_app/favicon/favicon.ico' %}"/>
+    <!-- Logo -->
+    <link rel="shortcut icon" href="{% static 'inbox_app/fabicon/favicon-32x32.png' %}"/>
+    <!-- Static CSS -->
+    <link rel="stylesheet" href="{% static 'inbox_app/css/style.css' %}" />
+    <!-- Title block -->
+    <title>{% block title %}{% endblock title %}</title>
+  </head>
+
+
+  <body>
+    <!-- ======= Wrapper ======= -->
+    <div class="wrapper no-gutters">
+      <!-- Background Image -->
+      {% block background_image %}
+          <style>
+            body {
+              margin: 0;
+              padding: 0;
+              background-image: url("/static/inbox_app/img/chaudiere_bg.png");
+              background-position: center;
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+            }
+          </style>
+      {% endblock background_image %}
+      
+      
+      <!-- ======= Header and Navbar ======= -->
+      <header>
+        <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: rgb(0, 0, 0);">
+
+          <!-- Logo and title (content 1) -->
+          <div class="col-sm">
+            <a class="navbar-brand flex-grow-1" style="color: white; margin-left: 25px">
+              {% block navbar_content %}
+              <img class="align-middle" style="height: 45px; filter: invert(100%)" src="{% static 'inbox_app/img/logo-only-black.png' %}" alt="" />&nbsp; <span class="align-middle">SWISS-MAILER</span>&nbsp; <i class="fas fa-envelope align-middle" style="color: red"></i>
+              {% endblock navbar_content %}
+            </a>
+          </div>
+
+
+          <!-- Data Time (content 3)-->
+          
+          
+            {% block DataTime %}
+
+            {% endblock DataTime %}   
+         
+          
+
+          <!-- Hamburger (content 3)-->
+          <div class="col-sm">
+            <a class="navbar-brand flex-grow-1" id="btn-nav" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+              <i class="fas fa-bars"></i>
+            </a>
+          </div>
+        </nav>
+
+      </header>
+
+
+      <!-- ===== Main Block content  -  (from extended htmls, always under the Navbar) ===== -->
+      {% block content %}
+      {% endblock content %}
+
+
+    <!-- ====== End wrapper before footer ====== -->  
+    </div>
+    
+
+
+
+    <!-- ======== Sidebar Bootstrap Offcanvas from Hamburger Menu ======== -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+      
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="d-grid gap-2">
+          {% block sidebar_content %}
+          <a href="{% url 'inbox-path' %}" class="btn btn-sm btn-outline-secondary">Login</a>{#'inbox-path' Because login required redirect to login #} 
+          {%endblock sidebar_content %}
+          <hr />
+          <br />
+          <center class="mt-5">
+            <img class="" style="height: 150px; filter: invert(80%)" src="{% static 'inbox_app/img/logo-only-black.png' %}" alt=""/>    
+          </center>
+        </div>
+      </div>
+    </div>
+
+    <!-- ======== Footer ======== -->
+    <footer class=" text-center text-lg-start" id="footer" style="color: white">
+      <div class="text-center p-3" style="background-color: rgb(0, 0, 0)">&copy; {% now "Y" %} Copyright:<a class="text-light" href="#" style="text-decoration: none"><span style="color: rgb(57, 123, 174);">&nbsp;&nbsp;&nbsp;     www.swiss-heating.com</span></a></div>
+    </footer>
+
+    <!-- ======== Includes ======== -->
+    {% include 'modals/logoutModal.html' %}
+    {% include 'modals/messageModal.html' %}
+
+
+    <!-- ======== Message from Backend Login page - Created by SweetAlert Script ======== -->
+    {% if form.errors %}
+
+      <!-- SweetAlert (!!! copied here for backend use !!!) -->
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script class="">                                     <!-- TAGS: "info", "error", "success" -->
+        swal("Denied!", "Username or Password is incorrect!", "info"); 
+      </script>
+      {% endif %}
+
+
+
+
+    <!-- ======= Scripts at the end of the body ======= -->
+      <!-- Bootstrap 5 JS cdn -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      <!-- Jquery 3.x minified-->
+      <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+      <!-- InputMask cdn -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
+      <!-- Typed.js - github mattboldt -->
+      <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+      <!-- SweetAlert (!!! works ONLY in Frontend here !!!)-->
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <!-- Static JS -->
+      <script src="{% static 'inbox_app/js/script.js' %}"></script>
+
+      <!-- Typed effect control from Home.html-->
+      {% block Typed %}
+      <script>
+        var typed = new Typed('#element', {
+          strings: [
+            'Les meilleurs prixs de toute la ',
+            'Nos services de qualité ',
+            'Des pompes à chaleur pour les ',
+            'Quand sa chauffe, on est fière de notre ',
+          ],
+          typeSpeed: 5,
+          backSpeed: 25,
+          backDelay: 2500,
+          loop: true
+        });
+      </script>
+      {% endblock Typed %}
+
+
+      <!-- Function to pulse the text of login page -->
+      <script>
+        (function pulse() {
+            $('.text-pulse').fadeOut(1000).fadeIn(1000, pulse);
+        })();
+
+      </script>
+
+      <!-- Function to hide/show password -->
+      <script>
+        function showPassword() {
+          var p = document.getElementById('password');
+          if (p.type === 'password') {
+            p.type = 'text';
+          } 
+          else {
+            p.type = 'password';
+          }
+        }
+      </script>
+
+      <!-- Function to close the Offcanvas when the button is clicked -->
+      <script>
+        jQuery("#offcanvasRight, .offcanvas-body a").click(function(){
+            console.log($(this).attr('href'));
+            jQuery('.offcanvas').offcanvas('hide');
+        })
+      </script>
+
+  </body>
+</html>
+
+  

@@ -1,0 +1,214 @@
+/*------------------------------------*
+# START CONFIGURATIONS
+-------------------------------------*/
+
+html, body {
+    box-sizing: border-box !important; 
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow: hidden; /* Hide scrollbar */
+    
+}    
+
+
+
+/*------------------------------------*
+# FOOTER
+-------------------------------------*/
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -50px; /* equal to footer height */
+}
+
+#footer, .push {
+    height: 50px; /* footer height */
+}
+
+/*------------------------------------*
+# NAVBAR
+-------------------------------------*/
+
+#btn-nav {
+    float: right;
+    margin-right: 25px;
+    
+}
+
+
+/*------------------------------------*
+# LOGIN
+-------------------------------------*/
+
+#card-login {
+    width: 450px;
+}
+
+.login-border {
+    border-top: 0.3rem solid #198754;
+    border-bottom: 0.3rem solid #198754;
+    border-radius:  10px;
+}
+
+#btn-enter {
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+/*------------------------------------*
+# OTHER PARTS - (MIXED PARTS)
+-------------------------------------*/
+
+.btn-modal {
+    width: 70px;
+}
+
+.btn-action {
+    width: 45px;
+}
+
+
+/*------------------------------------*
+# BOOTSTRAP LOGIN -FORM- GREEN THEME
+-------------------------------------*/
+
+.form-control:focus {
+    border-top-width: 1.5px;
+    border-left-width: 1.5px;
+    border-bottom-width: 0.5px;
+    border-right-width: 0.5px;
+    border-color: green;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.btn:focus, .btn-active {
+    outline: none;
+    box-shadow: none;
+}
+
+/* Check box green theme - (show/hide password) */
+
+.form-check-input:checked {
+    background-color: #8abaae;
+    border-color: green !important;
+    box-shadow: 1px 1px 8px rgba(1, 152, 117, 0.4);
+}
+
+.form-check-input {
+    border-color: green !important; 
+    box-shadow: 1px 1px 8px rgba(1, 152, 117, 0.4);
+}
+
+.form-switch .form-check-input {
+    --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='grey'/%3e%3c/svg%3e");
+}
+
+
+
+
+
+/*------------------------------------*
+# TYPED JS (EFFECT)
+-------------------------------------*/
+
+.block-position {
+    width: 80%;
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    margin-right: -35%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    text-align: center;
+    
+}
+
+/*------------------------------------*
+# MESSAGE (PULSE)
+-------------------------------------*/
+
+.pulse {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    position:fixed;
+    right: 30px;
+    bottom: 75px;
+    padding: 5px;
+    animation: animate 3s linear infinite;
+}
+
+@keyframes animate {
+    0% {box-shadow: 0 0 0 0 rgba(1, 152, 117, .7), 0 0 0 0 rgba(1, 152, 117,.7);}
+    40% {box-shadow: 0 0 0 30px rgba(255, 109, 74, 0), 0 0 0 0 rgba(1, 152, 117, .7);}
+    80% {box-shadow: 0 0 0 50px rgba(255, 109, 74, 0), 0 0 0 30px rgba(255, 109, 74, 0);}
+    100% {box-shadow: 0 0 0 0 rgba(255, 109, 74, 0), 0 0 0 30px rgba(255, 109, 74, 0);}
+
+}
+
+/*------------------------------------*
+# CUSTOM SWEET ALERT
+-------------------------------------*/
+
+/* All the texts centered */
+.swal-text {
+    text-align: center !important;
+}
+
+
+/* Icon setting */
+.swal-icon--success:before,
+.swal-icon--success:after,
+.swal-icon--success__hide-corners {
+    background:none !important;
+}
+
+.swal-icon--success {
+    /* color of the ring */
+    border-color: #198754;
+}
+
+.swal-icon--success__line {
+    /* animation */
+    background-color: #198754;
+}
+
+
+
+
+/* Button setting */
+
+.swal-button {
+    padding: 7px 19px;
+    border-radius: 5px;
+    background-color: black;
+    font-size: 12px;
+    border: 1px solid black;
+}
+
+.swal-button:focus {
+    /* remove the silver border around the button */
+    box-shadow: none;
+}
+
+.swal-button:focus {
+    /* remove the silver border around the button */
+    box-shadow: none;
+}
+
+.swal-button:not([disabled]):hover {
+    /* change color on hover */
+    background-color: transparent;
+    color: black;
+    border: 1px solid black;
+}
+
+
+/*-------------- TEST----------------------*
+
+
